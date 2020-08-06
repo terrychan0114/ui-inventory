@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ui-inventory"
+    }
+  },
+  "defaultProject": "ui-inventory",
+  "cli": {
+    "analytics": false
+  }
 }
