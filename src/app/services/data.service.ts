@@ -13,12 +13,12 @@ export class DataService {
 
   getData(route,param_name,data): Observable<any>{
     let param1 = new HttpParams().set(param_name,data)
-    this.api_call = 'http://localhost:8081/inventory' + route;
+    this.api_call = 'http://10.10.4.61:8081/inventory' + route;
     return this.http.get(this.api_call,{params: param1});
   }
   postData(route,data): Observable<any>{
-    this.api_call = 'http://localhost:8081/inventory' + route;
-    
+    this.api_call = 'http://10.10.4.61:8081/inventory' + route;
+
     return this.http.post(this.api_call,data);
   }
 }
