@@ -1,1 +1,40 @@
-<h1>Check what's in inventory</h1>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <p>
+        Search by:
+        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="part_number_click()">Part number</button>
+        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="lot_number_click()">Lot number</button>
+    </p>
+</div>
+
+<div *ngIf="selector">
+    <p>Part number:
+        <input #box (keyup)="0">
+    </p>
+    <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>
+</div>
+
+<div *ngIf="!selector">
+    <p>Lot number:
+        <input #box (keyup)="0">
+    </p>
+    <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_lot(box.value)">Search</button>
+</div>
+
+<ul *ngIf="inventory_list">
+    <tr>
+        <th>Lot Number</th>
+        <th>Part Number</th>
+        <th>Quantity</th>
+        <th>Date added</th>
+        <th>Last updated</th>
+    </tr>
+    <tr *ngFor="let inventory of inventory_list">
+        <!-- <p>{{ inventory.lot_number }} {{ inventory.part_number }} {{ inventory.quantity }}</p> -->
+        <td>{{ inventory.lot_number }}</td>
+        <td>{{ inventory.part_number }}</td>
+        <td>{{ inventory.quantity }}</td>
+        <td>{{ inventory.date_added }}</td>
+        <td>{{ inventory.last_updated }}</td>
+    </tr>
+
+</ul>
