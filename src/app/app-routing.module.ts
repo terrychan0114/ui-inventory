@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component'
 import { RetrieveComponent } from './retrieve/retrieve.component'
 import { UpdateComponent } from './update/update.component'
+import { NewDataComponent } from './new-data/new-data.component'
+import { HelpComponent } from './help/help.component'
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +17,14 @@ const routes: Routes = [
   {
     path: 'update',
     component: UpdateComponent
+  },
+  {
+    path: 'new_data',
+    component: NewDataComponent
+  },
+  {
+    path: 'help',
+    component: HelpComponent
   }
 ];
 

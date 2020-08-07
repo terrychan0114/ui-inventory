@@ -1,10 +1,9 @@
-export class Inventory
+export class PostInventory
 {
-    data_added: string;
-    last_updated: string;
+    location: string;
     lot_number: string;
     part_number: string;
-    quantity: string;
+    quantity: number;
     description: string;
     outside_process: string;
     status: string;

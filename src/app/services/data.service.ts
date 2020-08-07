@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { PostInventory } from '../classes/post_inventory';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataService {
-  api_call: string;
+  result: any;
+  home_route = 'http://10.10.4.61:8081/inventory';
   constructor(private http: HttpClient) { }
 
   getData(route,param_name,data): Observable<any>{
-    let param1 = new HttpParams().set(param_name,data)
-    this.api_call = 'http://10.10.4.61:8081/inventory' + route;
-    return this.http.get(this.api_call,{params: param1});
+    let param1 = new HttpParams().set(param_name,data);
+    // this.api_call = this.home_route + route;
+    return this.http.get(this.home_route + route,{params: param1})
   }
-  postData(route,data): Observable<any>{
-    this.api_call = 'http://10.10.4.61:8081/inventory' + route;
 
-    return this.http.post(this.api_call,data);
+  postData(route,opost:PostInventory): Observable<any>{
+    // this.api_call = this.home_route + route;
+    return this.http.post(this.home_route + route,opost);
   }
+
+  getAllData(): Observable<any>{
+    // this.api_call = this.home_route + route;
+    return this.http.get(this.home_route)
+  }
+
 }

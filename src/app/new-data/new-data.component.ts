@@ -5,11 +5,11 @@ import { PostInventory } from '../classes/post_inventory';
 import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
-  selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.scss']
+  selector: 'app-new-data',
+  templateUrl: './new-data.component.html',
+  styleUrls: ['./new-data.component.scss']
 })
-export class UpdateComponent implements OnInit {
+export class NewDataComponent implements OnInit {
   inventory_list: Inventory[];
   return_status: number;
   part_parameter: string;
@@ -47,5 +47,4 @@ export class UpdateComponent implements OnInit {
       }
     )
   }
-
 }

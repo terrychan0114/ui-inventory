@@ -1,16 +1,10 @@
 <div class="btn-group" role="group" aria-label="Basic example">
     <p>
         Search by:
-        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="part_number_click()">Part number</button>
+        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="search_all()">All</button>
         <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="lot_number_click()">Lot number</button>
+        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="part_number_click()">Part number</button>
     </p>
-</div>
-
-<div *ngIf="selector">
-    <p>Part number:
-        <input #box (keyup)="0">
-    </p>
-    <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>
 </div>
 
 <div *ngIf="!selector">
@@ -20,21 +14,37 @@
     <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_lot(box.value)">Search</button>
 </div>
 
-<ul *ngIf="inventory_list">
+<div *ngIf="selector">
+    <p>Part number:
+        <input #box (keyup)="0">
+    </p>
+    <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>
+</div>
+
+<table *ngIf="inventory_list">
     <tr>
+        <th>Location</th>
         <th>Lot Number</th>
         <th>Part Number</th>
         <th>Quantity</th>
-        <th>Date added</th>
+        <th>Description</th>
+        <th>Outside process</th>
+        <th>Status</th>
+        <th>Lead time</th>
         <th>Last updated</th>
+        <th>Remarks</th>
     </tr>
     <tr *ngFor="let inventory of inventory_list">
-        <!-- <p>{{ inventory.lot_number }} {{ inventory.part_number }} {{ inventory.quantity }}</p> -->
+        <td>{{ inventory.location }}</td>
         <td>{{ inventory.lot_number }}</td>
         <td>{{ inventory.part_number }}</td>
         <td>{{ inventory.quantity }}</td>
-        <td>{{ inventory.date_added }}</td>
+        <td>{{ inventory.description }}</td>
+        <td>{{ inventory.outside_process }}</td>
+        <td>{{ inventory.status }}</td>
+        <td>{{ inventory.lead_time }}</td>
         <td>{{ inventory.last_updated }}</td>
+        <td>{{ inventory.remarks }}</td>
     </tr>
 
-</ul>
+</table>
