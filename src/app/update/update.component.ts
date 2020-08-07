@@ -17,7 +17,17 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  search_part(value){
+    this.part_parameter = 'part_number';
+    console.log("Calling getData")
+    this.data.getData('/part-number',this.part_parameter,value)
+    .subscribe(data=> 
+      {
+        this.inventory_list = data;
+        console.log(this.inventory_list)
+      }
+    )
+  }
   add_inventory(lot_number,part_number,quantity,location,description,outside_process,status,lead_time,remarks){
     var opost = new PostInventory();
     opost.lot_number = lot_number;
@@ -38,8 +48,8 @@ export class UpdateComponent implements OnInit {
       );
   }
   verify(value){
-    this.part_parameter = 'lot_number';
-    this.data.getData('/lot-number',this.part_parameter,value)
+    this.part_parameter = 'part_number';
+    this.data.getData('/part-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;

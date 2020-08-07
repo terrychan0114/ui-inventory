@@ -1,13 +1,42 @@
-<h1>Taking parts out</h1>
+<h1>Update inventory information</h1>
+<div>
+    <p>Part number:
+        <input #box (keyup)="0">
+    </p>
+    <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>    
+</div>
+
+<table *ngIf="inventory_list">
+    <tr>
+        <th>Location</th>
+        <th>Lot Number</th>
+        <th>Part Number</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Outside process</th>
+        <th>Status</th>
+        <th>Lead time</th>
+        <th>Last updated</th>
+        <th>Remarks</th>
+    </tr>
+    <tr *ngFor="let inventory of inventory_list">
+        <td>{{ inventory.location }}</td>
+        <td>{{ inventory.lot_number }}</td>
+        <td>{{ inventory.part_number }}</td>
+        <td>{{ inventory.quantity }}</td>
+        <td>{{ inventory.description }}</td>
+        <td>{{ inventory.outside_process }}</td>
+        <td>{{ inventory.status }}</td>
+        <td>{{ inventory.lead_time }}</td>
+        <td>{{ inventory.last_updated }}</td>
+        <td>{{ inventory.remarks }}</td>
+    </tr>
+</table>
 
 <table>
     <tr>
         <th>Lot number</th>
         <td><input type="string" #lot_box (keyup)="0"></td>
-    </tr>
-    <tr>
-        <th>Part number</th>
-        <td><input type="string" #part_box (keyup)="0"></td>
     </tr>
     <tr>
         <th>Quantity</th>
@@ -46,7 +75,7 @@
     outline="true" 
     class="waves-light" 
     mdbWavesEffect 
-    (click)="add_inventory(lot_box.value,part_box.value,quantity_box.value,loc_box.value, desc_box.value,op_box.value,stat_box.value,lt_box.value,remark_box.value)">Add new</button>
+    (click)="add_inventory(lot_box.value,box.value,quantity_box.value,loc_box.value, desc_box.value,op_box.value,stat_box.value,lt_box.value,remark_box.value)">Update</button>
     
     <button 
     mdbBtn type="button" 
@@ -55,33 +84,6 @@
     outline="true" 
     class="waves-light" 
     mdbWavesEffect 
-    (click)="verify(lot_box.value)">Verify</button>
+    (click)="verify(box.value)">Verify</button>
 </div>
 
-<table *ngIf="inventory_list">
-    <tr>
-        <th>Location</th>
-        <th>Lot Number</th>
-        <th>Part Number</th>
-        <th>Quantity</th>
-        <th>Description</th>
-        <th>Outside process</th>
-        <th>Status</th>
-        <th>Lead time</th>
-        <th>Last updated</th>
-        <th>Remarks</th>
-    </tr>
-    <tr *ngFor="let inventory of inventory_list">
-        <td>{{ inventory.location }}</td>
-        <td>{{ inventory.lot_number }}</td>
-        <td>{{ inventory.part_number }}</td>
-        <td>{{ inventory.quantity }}</td>
-        <td>{{ inventory.description }}</td>
-        <td>{{ inventory.outside_process }}</td>
-        <td>{{ inventory.status }}</td>
-        <td>{{ inventory.lead_time }}</td>
-        <td>{{ inventory.last_updated }}</td>
-        <td>{{ inventory.remarks }}</td>
-    </tr>
-
-</table>

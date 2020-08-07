@@ -14,7 +14,7 @@ export class RetrieveComponent implements OnInit {
   input_data: string;
   part_parameter: string;
   constructor(private data: DataService) { }
-
+  tableColumns = ['Location', 'Part Number', 'Lot number', 'Quantity', 'Description', 'Outside process', 'Status', 'Lead time', 'Last updated', 'Remarks'];
   ngOnInit(): void {
     this.search_all();
   }

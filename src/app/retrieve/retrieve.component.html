@@ -21,7 +21,52 @@
     <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>
 </div>
 
-<table *ngIf="inventory_list">
+<table mat-table [dataSource]="inventory_list">
+    <ng-container  matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef>Location</mat-header-cell>
+        <mat-cell *matCellDef="let location"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="lotNumber">
+        <mat-header-cell *matHeaderCellDef>Lot number</mat-header-cell>
+        <mat-cell *matCellDef="let lot_number"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="partNumber">
+        <mat-header-cell *matHeaderCellDef>Part number</mat-header-cell>
+        <mat-cell *matCellDef="let part_number"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+        <mat-cell *matCellDef="let quantity"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let description"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="outsideProcess">
+        <mat-header-cell *matHeaderCellDef>Outside Process</mat-header-cell>
+        <mat-cell *matCellDef="let outside_process"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>status</mat-header-cell>
+        <mat-cell *matCellDef="let status"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="leadTime">
+        <mat-header-cell *matHeaderCellDef>Lead Time</mat-header-cell>
+        <mat-cell *matCellDef="let lead_time"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="lastUpdated">
+        <mat-header-cell *matHeaderCellDef>Last updated</mat-header-cell>
+        <mat-cell *matCellDef="let last_updated"></mat-cell>
+    </ng-container>
+    <ng-container  matColumnDef="remarks">
+        <mat-header-cell *matHeaderCellDef>Remarks</mat-header-cell>
+        <mat-cell *matCellDef="let remarks"></mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+</table>
+
+<!-- <table *ngIf="inventory_list">
     <tr>
         <th>Location</th>
         <th>Lot Number</th>
@@ -47,4 +92,4 @@
         <td>{{ inventory.remarks }}</td>
     </tr>
 
-</table>
+</table> -->
