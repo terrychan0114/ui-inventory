@@ -21,7 +21,14 @@ export class InterceptorService implements HttpInterceptor{
           if (error.error instanceof ErrorEvent){
             errorMsg = `Error: ${error.error.message}`;
           }else{
-            errorMsg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+            if (error.status == 404){
+              errorMsg = `Message: The inventory you're looking for is not avaliable`;
+            }else if(error.status == 405 || error.status == 400){
+              errorMsg = `Message: Please fill in the required field`;
+            }else{
+              errorMsg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+            }
+            
           }
           window.alert(errorMsg);
           return throwError(errorMsg)
