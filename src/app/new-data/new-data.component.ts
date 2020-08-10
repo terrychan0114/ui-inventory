@@ -36,8 +36,30 @@ export class NewDataComponent implements OnInit {
           console.log(this.return_status)
         }
       );
+    // this.search_part(part_number);
   }
-  verify(value){
+  search_part(value){
+    this.part_parameter = 'part_number';
+    console.log("Calling getData")
+    this.data.getData('/part-number',this.part_parameter,value)
+    .subscribe(data=> 
+      {
+        this.inventory_list = data;
+        // console.log(this.inventory_list)
+      }
+    )
+  }
+  verify_pn(value){
+    this.part_parameter = 'part_number';
+    this.data.getData('/part-number',this.part_parameter,value)
+    .subscribe(data=> 
+      {
+        this.inventory_list = data;
+        console.log(this.inventory_list)
+      }
+    )
+  }
+  verify_ln(value){
     this.part_parameter = 'lot_number';
     this.data.getData('/lot-number',this.part_parameter,value)
     .subscribe(data=> 

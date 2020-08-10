@@ -24,7 +24,7 @@ export class InterceptorService implements HttpInterceptor{
             if (error.status == 404){
               errorMsg = `Message: The inventory you're looking for is not avaliable`;
             }else if(error.status == 405 || error.status == 400){
-              errorMsg = `Message: Please fill in the required field`;
+              errorMsg = `Message: Something went wrong, please check if the part number, lot number is correct`;
             }else{
               errorMsg = `Error Code: ${error.status}\nMessage: ${error.message}`;
             }

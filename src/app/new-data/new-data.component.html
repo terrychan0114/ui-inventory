@@ -3,19 +3,19 @@
 <table>
     <tr>
         <th>Lot number</th>
-        <td><input type="string" #lot_box (keyup)="0"></td>
+        <td><input type="string" #lot_box (keyup)="0" placeholder="required"></td>
     </tr>
     <tr>
         <th>Part number</th>
-        <td><input type="string" #part_box (keyup)="0"></td>
+        <td><input type="string" #part_box (keyup)="0" placeholder="required"></td>
     </tr>
     <tr>
         <th>Quantity</th>
-        <td><input type="string" #quantity_box (keyup)="0"></td>
+        <td><input type="string" #quantity_box (keyup)="0" placeholder="required"></td>
     </tr>
     <tr>
         <th>Location</th>
-        <td><input type="string" #loc_box (keyup)="0"></td>
+        <td><input type="string" #loc_box (keyup)="0" placeholder="required"></td>
     </tr>
     <tr>
         <th>Description</th>
@@ -55,7 +55,16 @@
     outline="true" 
     class="waves-light" 
     mdbWavesEffect 
-    (click)="verify(lot_box.value)">Verify</button>
+    (click)="verify_pn(part_box.value)">Verify by part number</button>
+
+    <button 
+    mdbBtn type="button" 
+    color="primary" 
+    size="sm" 
+    outline="true" 
+    class="waves-light" 
+    mdbWavesEffect 
+    (click)="verify_ln(lot_box.value)">Verify by lot number</button>
 </div>
 
 <table *ngIf="inventory_list">

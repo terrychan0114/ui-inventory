@@ -23,6 +23,11 @@ export class DataService {
     return this.http.post(this.home_route + route,opost);
   }
 
+  putData(route,opost:PostInventory): Observable<any>{
+    // this.api_call = this.home_route + route;
+    return this.http.put(this.home_route + route,opost);
+  }
+  
   getAllData(): Observable<any>{
     // this.api_call = this.home_route + route;
     return this.http.get(this.home_route)

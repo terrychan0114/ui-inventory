@@ -1,7 +1,7 @@
 <h1>Update inventory information</h1>
 <div>
     <p>Part number:
-        <input #box (keyup)="0">
+        <input #box (keyup)="0" placeholder="required">
     </p>
     <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>    
 </div>
@@ -36,11 +36,11 @@
 <table>
     <tr>
         <th>Lot number</th>
-        <td><input type="string" #lot_box (keyup)="0"></td>
+        <td><input type="string" #lot_box (keyup)="0" placeholder="required"></td>
     </tr>
     <tr>
         <th>Quantity</th>
-        <td><input type="string" #quantity_box (keyup)="0"></td>
+        <td><input type="string" #quantity_box (keyup)="0" placeholder="required"></td>
     </tr>
     <tr>
         <th>Location</th>
@@ -75,7 +75,7 @@
     outline="true" 
     class="waves-light" 
     mdbWavesEffect 
-    (click)="add_inventory(lot_box.value,box.value,quantity_box.value,loc_box.value, desc_box.value,op_box.value,stat_box.value,lt_box.value,remark_box.value)">Update</button>
+    (click)="update_inventory(lot_box.value,box.value,quantity_box.value,loc_box.value, desc_box.value,op_box.value,stat_box.value,lt_box.value,remark_box.value)">Update</button>
     
     <button 
     mdbBtn type="button" 
