@@ -18,7 +18,7 @@ header {
                 a {
                     padding: 1.5em;
                     text-transform: uppercase;
-                    font-size: .8em;
+                    font-size: 0.9em;
 
                     &:hover {
                         background: #b3d9ff;
@@ -27,4 +27,7 @@ header {
             }
         }
     }
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
 }

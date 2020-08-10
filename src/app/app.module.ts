@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
 import { UpdateComponent } from './update/update.component';
@@ -36,7 +37,8 @@ import { InterceptorService } from './services/interceptor.service';
     MatInputModule,
     BrowserAnimationsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatRadioModule
   ],
   providers: [
     DataService, 
