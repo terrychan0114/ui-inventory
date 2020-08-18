@@ -1,11 +1,11 @@
-FROM node:12.18.3-alpine3.12 as build-step
+FROM node:14.8.0-stretch-slim as build-step
 WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:1.19.1-alpine as prod-stage
+FROM nginx:1.19.2-alpine as prod-stage
 COPY --from=build-step /app/dist/ui-inventory /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]

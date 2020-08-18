@@ -34,8 +34,8 @@ export class UpdateComponent implements OnInit {
     .subscribe(data=> 
       {
         this.inventory_list = data;
-        console.log("Original data return")
-        console.log(this.inventory_list)
+        // console.log("Original data return")
+        // console.log(this.inventory_list)
       }
     )
     // console.log("Clicked on search lot button");
@@ -61,24 +61,24 @@ export class UpdateComponent implements OnInit {
           console.log(this.return_status)
         }
       );
-    this.search_lot(lot_number);
+    setTimeout(this.search_lot,1000,lot_number);
   }
   check_entry(original_data,new_data){
     const inventory_keys = Object.keys(original_data);
-    console.log("New data entry")
-    console.log(new_data);
+    // console.log("New data entry")
+    // console.log(new_data);
     for (let invetory_key of inventory_keys){
       if(new_data[invetory_key] !== ""){
-        console.log(`Check type of $inventory_key`);
-        console.log(new_data[invetory_key]);
-        console.log(typeof(new_data[invetory_key]));
+        // console.log(`Check type of $inventory_key`);
+        // console.log(new_data[invetory_key]);
+        // console.log(typeof(new_data[invetory_key]));
         // console.log(original_data[invetory_key]);
         original_data[invetory_key] = new_data[invetory_key];
-        console.log("1");
+        // console.log("1");
       }
     }
-    console.log("New post object");
-    console.log(original_data);
+    // console.log("New post object");
+    // console.log(original_data);
     return original_data;
   }
   verify(value){
@@ -87,7 +87,7 @@ export class UpdateComponent implements OnInit {
     .subscribe(data=> 
       {
         this.inventory_list = data;
-        console.log(this.inventory_list)
+        // console.log(this.inventory_list)
       }
     )
   }
