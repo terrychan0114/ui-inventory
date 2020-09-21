@@ -14,13 +14,14 @@ export class UpdateComponent implements OnInit {
   return_status: number;
   part_parameter: string;
   constructor(private data: DataService) { }
-
+  home_route: any = 'http://10.10.4.76:8081/inventory';
+  // home_route: any = 'http://10.10.4.61:4201/inventory';
   ngOnInit(): void {
   }
   search_part(value){
     this.part_parameter = 'part_number';
     console.log("Calling getData")
-    this.data.getData('/part-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -30,7 +31,7 @@ export class UpdateComponent implements OnInit {
   }
   search_lot(value){
     this.part_parameter = 'lot_number';
-    this.data.getData('/lot-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/lot-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -54,7 +55,7 @@ export class UpdateComponent implements OnInit {
     opost.lead_time = lead_time;
     opost.remarks = remarks;
     newpost = this.check_entry(this.inventory_list[0],opost);
-    this.data.putData('',newpost)
+    this.data.putData(this.home_route,'',newpost)
       .subscribe(data=> 
         {
           this.return_status = data;
@@ -83,7 +84,7 @@ export class UpdateComponent implements OnInit {
   }
   verify(value){
     this.part_parameter = 'part_number';
-    this.data.getData('/part-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;

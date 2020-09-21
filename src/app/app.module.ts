@@ -14,7 +14,8 @@ import { RetrieveComponent } from './retrieve/retrieve.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { NewDataComponent } from './new-data/new-data.component';
-import { HelpComponent } from './help/help.component'
+import { HelpComponent } from './help/help.component';
+import { StatusComponent } from './status/status.component';
 
 import { DataService } from './services/data.service';
 import { InterceptorService } from './services/interceptor.service';
@@ -27,7 +28,8 @@ import { InterceptorService } from './services/interceptor.service';
     NavComponent,
     HomeComponent,
     NewDataComponent,
-    HelpComponent
+    HelpComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,

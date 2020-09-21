@@ -17,7 +17,8 @@ export class NewDataComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  home_route: any = 'http://10.10.4.76:8081/inventory';
+  // home_route: any = 'http://10.10.4.61:4201/inventory';
   add_inventory(lot_number,part_number,quantity,location,description,outside_process,status,lead_time,remarks){
     var opost = new PostInventory();
     opost.lot_number = lot_number;
@@ -29,7 +30,7 @@ export class NewDataComponent implements OnInit {
     opost.status = status;
     opost.lead_time = lead_time;
     opost.remarks = remarks;
-    this.data.postData('',opost)
+    this.data.postData(this.home_route,'',opost)
       .subscribe(data=> 
         {
           this.return_status = data;
@@ -41,7 +42,7 @@ export class NewDataComponent implements OnInit {
   search_part(value){
     this.part_parameter = 'part_number';
     console.log("Calling getData")
-    this.data.getData('/part-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -51,7 +52,7 @@ export class NewDataComponent implements OnInit {
   }
   verify_pn(value){
     this.part_parameter = 'part_number';
-    this.data.getData('/part-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -61,7 +62,7 @@ export class NewDataComponent implements OnInit {
   }
   verify_ln(value){
     this.part_parameter = 'lot_number';
-    this.data.getData('/lot-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/lot-number',this.part_parameter,value)
     .subscribe(data=> 
       {
         this.inventory_list = data;

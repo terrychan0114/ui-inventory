@@ -9,28 +9,28 @@ import { PostInventory } from '../classes/post_inventory';
 
 export class DataService {
   result: any;
-  home_route = 'http://10.10.4.61:8081/inventory';
+  // home_route: string;
   constructor(private http: HttpClient) { }
 
-  getData(route,param_name,data): Observable<any>{
+  getData(home_route,route,param_name,data): Observable<any>{
     let param1 = new HttpParams().set(param_name,data);
     // this.api_call = this.home_route + route;
-    return this.http.get(this.home_route + route,{params: param1})
+    return this.http.get(home_route + route,{params: param1})
   }
 
-  postData(route,opost:PostInventory): Observable<any>{
+  postData(home_route,route,opost:PostInventory): Observable<any>{
     // this.api_call = this.home_route + route;
-    return this.http.post(this.home_route + route,opost);
+    return this.http.post(home_route + route,opost);
   }
 
-  putData(route,opost:PostInventory): Observable<any>{
+  putData(home_route,route,opost:PostInventory): Observable<any>{
     // this.api_call = this.home_route + route;
-    return this.http.put(this.home_route + route,opost);
+    return this.http.put(home_route + route,opost);
   }
   
-  getAllData(): Observable<any>{
+  getAllData(home_route): Observable<any>{
     // this.api_call = this.home_route + route;
-    return this.http.get(this.home_route)
+    return this.http.get(home_route)
   }
 
 }
