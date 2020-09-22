@@ -1,11 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Inventory } from '../classes/inventory';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-
-
 
 @Component({
   selector: 'app-retrieve',
@@ -20,7 +15,7 @@ export class RetrieveComponent implements OnInit {
   part_parameter: string;
 
   
-  displayedColumns: string[]=['location','lot_number','part_number','quantity','description','status','lead_time','last_updated','remarks'];
+  displayedColumns: string[]=['location','lot_number','part_number','quantity','description','last_updated','remarks'];
   inventory_list: Inventory[];
 
   // @ViewChild(MatSort) sort: MatSort;
@@ -28,8 +23,8 @@ export class RetrieveComponent implements OnInit {
   
   constructor(private data: DataService) { }
 
-  // home_route: any = 'http://10.10.4.76:8081/inventory';
-  home_route: any = 'http://10.10.4.61:8083/inventory';
+  home_route: any = 'http://10.10.4.76:8081/inventory';
+  // home_route: any = 'http://10.10.4.61:8083/inventory';
   ngOnInit(): void {
     this.search_all();
   }
