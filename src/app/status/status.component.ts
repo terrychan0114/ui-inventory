@@ -34,7 +34,7 @@ export class StatusComponent implements OnInit {
   header: any;
   factory: string = 'nj';
   constructor(private data: DataService) { }
-  home_route: any = 'http://10.10.4.61:8090/status';
+  home_route: any = 'http://10.10.4.61:8082/status';
   // home_route: any = 'http://10.10.4.76:8081/inventory';
   route: any;
   ngOnInit(): void {

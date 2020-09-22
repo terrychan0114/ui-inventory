@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Inventory } from '../classes/inventory';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+
+
 
 @Component({
   selector: 'app-retrieve',
@@ -10,12 +15,21 @@ import { Inventory } from '../classes/inventory';
 
 export class RetrieveComponent implements OnInit {
   selector = false;
-  inventory_list: Inventory[];
+  
   input_data: string;
   part_parameter: string;
+
+  
+  displayedColumns: string[]=['location','lot_number','part_number','quantity','description','status','lead_time','last_updated','remarks'];
+  inventory_list: Inventory[];
+
+  // @ViewChild(MatSort) sort: MatSort;
+  // @ViewChild(MatPaginator) paginitor: MatPaginator;
+  
   constructor(private data: DataService) { }
-  home_route: any = 'http://10.10.4.76:8081/inventory';
-  // home_route: any = 'http://10.10.4.61:4201/inventory';
+
+  // home_route: any = 'http://10.10.4.76:8081/inventory';
+  home_route: any = 'http://10.10.4.61:8083/inventory';
   ngOnInit(): void {
     this.search_all();
   }
@@ -64,3 +78,17 @@ export class RetrieveComponent implements OnInit {
     console.log("Clicked on search lot button");
   }
 }
+
+// export interface Inventory {
+//   loction: string;
+//   lot_number: string;
+//   part_number: string;
+//   quantity: string;
+//   description: string;
+//   status: string;
+//   lead_time: string;
+//   last_updated: string;
+//   remarks: string;
+//   data_added: string;
+//   outside_process: string;
+// } 
