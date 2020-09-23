@@ -5,7 +5,6 @@ import { RetrieveComponent } from './retrieve/retrieve.component'
 import { UpdateComponent } from './update/update.component'
 import { NewDataComponent } from './new-data/new-data.component'
 import { HelpComponent } from './help/help.component'
-import { StatusComponent } from './status/status.component'
 
 const routes: Routes = [
   {
@@ -27,10 +26,6 @@ const routes: Routes = [
   {
     path: 'help',
     component: HelpComponent
-  },
-  {
-    path: 'status',
-    component: StatusComponent
   }
 ];
 

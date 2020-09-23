@@ -14,7 +14,7 @@ export class UpdateComponent implements OnInit {
   return_status: number;
   part_parameter: string;
   constructor(private data: DataService) { }
-  home_route: any = 'http://10.10.4.76:8081/inventory';
+  home_route: any = 'http://10.10.4.61:8081/inventory';
   // home_route: any = 'http://10.10.4.61:8083/inventory';
   ngOnInit(): void {
   }

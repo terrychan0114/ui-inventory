@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
-// import { MatSort } from '@angular/material/sort';
 import { AppComponent } from './app.component';
 import { UpdateComponent } from './update/update.component';
 import { RetrieveComponent } from './retrieve/retrieve.component';
@@ -15,7 +14,6 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { NewDataComponent } from './new-data/new-data.component';
 import { HelpComponent } from './help/help.component';
-import { StatusComponent } from './status/status.component';
 
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -69,8 +67,7 @@ import { InterceptorService } from './services/interceptor.service';
     NavComponent,
     HomeComponent,
     NewDataComponent,
-    HelpComponent,
-    StatusComponent
+    HelpComponent
   ],
   imports: [
     BrowserModule,
