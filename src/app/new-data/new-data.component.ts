@@ -18,8 +18,8 @@ export class NewDataComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // home_route: any = 'http://10.10.4.61:8081/inventory';
-  home_route: any = 'http://10.10.4.61:4201/inventory';
+  home_route: any = 'http://10.10.4.61:8081/inventory';
+  // home_route: any = 'http://10.10.4.61:4201/inventory';
   add_inventory(lot_number,part_number,quantity,location,description,outside_process,status,lead_time,remarks){
     var opost = new PostInventory();
     opost.lot_number = lot_number;

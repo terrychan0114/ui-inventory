@@ -15,8 +15,8 @@ export class UpdateComponent implements OnInit {
   part_parameter: string;
   sorting: string = 'location';
   constructor(private data: DataService) { }
-  // home_route: any = 'http://10.10.4.61:8081/inventory';
-  home_route: any = 'http://10.10.4.61:4201/inventory';
+  home_route: any = 'http://10.10.4.61:8081/inventory';
+  // home_route: any = 'http://10.10.4.61:4201/inventory';
   ngOnInit(): void {
   }
   search_part(value){

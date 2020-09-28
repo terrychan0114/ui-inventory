@@ -23,8 +23,8 @@ export class RetrieveComponent implements OnInit {
   
   constructor(private data: DataService) { }
 
-  // home_route: any = 'http://10.10.4.61:8081/inventory';
-  home_route: any = 'http://10.10.4.61:4201/inventory';
+  home_route: any = 'http://10.10.4.61:8081/inventory';
+  // home_route: any = 'http://10.10.4.61:4201/inventory';
   ngOnInit(): void {
     this.search_all();
   }
