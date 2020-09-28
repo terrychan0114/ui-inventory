@@ -3,12 +3,19 @@
 <p>If you want to search by lot number, then press "Lot Number" and type in the lot number in the box and press search.</p>
 <p>If you want to search by part number, then press "Part Number" and type in the part number in the box and press search.</p>
 <div class="btn-group" role="group" aria-label="Basic example">
-    <p>
-        Search by:
-        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="search_all()">All</button>
-        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="lot_number_click()">Lot number</button>
-        <button mdbBtn type="button" color="primary" outline="true" class="waves-light" mdbWavesEffect (click)="part_number_click()">Part number</button>
-    </p>
+    <button mat-button [matMenuTriggerFor]="search_menu" class="menuButton">Search by</button>
+    <!-- #enddocregion mat-menu-trigger-for -->
+    <mat-menu #search_menu="matMenu">
+        <button mat-menu-item (click)="lot_number_click()" class="menuButton">Lot number</button>
+        <button mat-menu-item (click)="part_number_click()" class="menuButton">Part number</button>
+        <button mat-menu-item (click)="search_all()" class="menuButton">All</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="sort_menu" class="menuButton">Sort</button>
+    <mat-menu #sort_menu="matMenu">
+        <button mat-menu-item (click)="sort('location')" class="menuButton">Location</button>
+        <button mat-menu-item (click)="sort('part_number')" class="menuButton">Part number</button>
+        <button mat-menu-item (click)="sort('lot_number')" class="menuButton">Lot number</button>
+    </mat-menu>
 </div>
 
 <div *ngIf="!selector">
@@ -16,15 +23,14 @@
         <input #box (keyup)="0" placeholder="required">
     </p>
     <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_lot(box.value)">Search</button>
-</div>
+  </div>
 
 <div *ngIf="selector">
     <p>Part number:
         <input #box (keyup)="0" placeholder="required">
     </p>
     <button mdbBtn type="button" color="primary" size="sm" outline="true" class="waves-light" mdbWavesEffect (click)="search_part(box.value)">Search</button>
-</div>
-
+  </div>
 <table *ngIf="inventory_list">
     <tr>
         <th>Location</th>

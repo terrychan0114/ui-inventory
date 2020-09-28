@@ -10,11 +10,11 @@ import { Inventory } from '../classes/inventory';
 
 export class RetrieveComponent implements OnInit {
   selector = false;
-  
-  input_data: string;
-  part_parameter: string;
-
-  
+  sort_flag: boolean = true;
+  // part_parameter: string;
+  sorting: string='location';
+  lot_number: string;
+  part_number: string;
   displayedColumns: string[]=['location','lot_number','part_number','quantity','description','last_updated','remarks'];
   inventory_list: Inventory[];
 
@@ -23,25 +23,43 @@ export class RetrieveComponent implements OnInit {
   
   constructor(private data: DataService) { }
 
-  home_route: any = 'http://10.10.4.61:8081/inventory';
-  // home_route: any = 'http://10.10.4.61:8083/inventory';
+  // home_route: any = 'http://10.10.4.61:8081/inventory';
+  home_route: any = 'http://10.10.4.61:4201/inventory';
   ngOnInit(): void {
     this.search_all();
   }
-
+  sort(value){
+    this.sorting=value;
+    if (this.sort_flag == true) {
+      this.search_all();
+    }else{
+      if (this.selector == true){
+      this.search_part(this.part_number)
+      }else{
+        this.search_lot(this.lot_number)
+      }
+    }
+  }
   part_number_click(){
     this.selector = true;
+    this.sort_flag = false;
     // console.log("Clicked on part number button");
   }
   lot_number_click(){
     this.selector = false;
+    this.sort_flag = false;
     // console.log("Clicked on lot number button");
   }
 
   search_part(value){
-    this.part_parameter = 'part_number';
+    var param = {
+      'sorting':this.sorting,
+      'part_number': value
+    };
+    this.part_number = value;
+    // this.part_parameter = 'part_number';
     console.log("Calling getData")
-    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
+    this.data.getData(this.home_route,'/part-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -51,8 +69,12 @@ export class RetrieveComponent implements OnInit {
   }
 
   search_lot(value){
-    this.part_parameter = 'lot_number';
-    this.data.getData(this.home_route,'/lot-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'lot_number': value
+    };
+    this.lot_number = value;
+    this.data.getData(this.home_route,'/lot-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -63,7 +85,11 @@ export class RetrieveComponent implements OnInit {
   }
 
   search_all(){
-    this.data.getAllData(this.home_route)
+    this.sort_flag = true;
+    var param = {
+      'sorting':this.sorting,
+    };
+    this.data.getAllData(this.home_route,param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -73,17 +99,3 @@ export class RetrieveComponent implements OnInit {
     console.log("Clicked on search lot button");
   }
 }
-
-// export interface Inventory {
-//   loction: string;
-//   lot_number: string;
-//   part_number: string;
-//   quantity: string;
-//   description: string;
-//   status: string;
-//   lead_time: string;
-//   last_updated: string;
-//   remarks: string;
-//   data_added: string;
-//   outside_process: string;
-// } 

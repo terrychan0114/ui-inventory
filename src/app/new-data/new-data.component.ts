@@ -13,12 +13,13 @@ export class NewDataComponent implements OnInit {
   inventory_list: Inventory[];
   return_status: number;
   part_parameter: string;
+  sorting: string = 'location';
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
   }
-  home_route: any = 'http://10.10.4.61:8081/inventory';
-  // home_route: any = 'http://10.10.4.61:8083/inventory';
+  // home_route: any = 'http://10.10.4.61:8081/inventory';
+  home_route: any = 'http://10.10.4.61:4201/inventory';
   add_inventory(lot_number,part_number,quantity,location,description,outside_process,status,lead_time,remarks){
     var opost = new PostInventory();
     opost.lot_number = lot_number;
@@ -40,9 +41,12 @@ export class NewDataComponent implements OnInit {
     // this.search_part(part_number);
   }
   search_part(value){
-    this.part_parameter = 'part_number';
-    console.log("Calling getData")
-    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'part_number': value
+    };
+    // this.part_parameter = 'lot_number';
+    this.data.getData(this.home_route,'/part-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -51,8 +55,12 @@ export class NewDataComponent implements OnInit {
     )
   }
   verify_pn(value){
-    this.part_parameter = 'part_number';
-    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'part_number': value
+    };
+    // this.part_parameter = 'lot_number';
+    this.data.getData(this.home_route,'/part-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -61,8 +69,12 @@ export class NewDataComponent implements OnInit {
     )
   }
   verify_ln(value){
-    this.part_parameter = 'lot_number';
-    this.data.getData(this.home_route,'/lot-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'lot_number': value
+    };
+    // this.part_parameter = 'lot_number';
+    this.data.getData(this.home_route,'/lot-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;

@@ -13,15 +13,19 @@ export class UpdateComponent implements OnInit {
   inventory_list: Inventory[];
   return_status: number;
   part_parameter: string;
+  sorting: string = 'location';
   constructor(private data: DataService) { }
-  home_route: any = 'http://10.10.4.61:8081/inventory';
-  // home_route: any = 'http://10.10.4.61:8083/inventory';
+  // home_route: any = 'http://10.10.4.61:8081/inventory';
+  home_route: any = 'http://10.10.4.61:4201/inventory';
   ngOnInit(): void {
   }
   search_part(value){
-    this.part_parameter = 'part_number';
-    console.log("Calling getData")
-    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'part_number': value
+    };
+    // this.part_parameter = 'lot_number';
+    this.data.getData(this.home_route,'/part-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -30,8 +34,12 @@ export class UpdateComponent implements OnInit {
     )
   }
   search_lot(value){
-    this.part_parameter = 'lot_number';
-    this.data.getData(this.home_route,'/lot-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'lot_number': value
+    };
+    // this.part_parameter = 'lot_number';
+    this.data.getData(this.home_route,'/lot-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
@@ -83,8 +91,12 @@ export class UpdateComponent implements OnInit {
     return original_data;
   }
   verify(value){
-    this.part_parameter = 'part_number';
-    this.data.getData(this.home_route,'/part-number',this.part_parameter,value)
+    var param = {
+      'sorting':this.sorting,
+      'part_number': value
+    };
+    // this.part_parameter = 'lot_number';
+    this.data.getData(this.home_route,'/part-number',param)
     .subscribe(data=> 
       {
         this.inventory_list = data;
